@@ -4,20 +4,23 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import ThemeProvider from './context/ThemeContext';
+import { ClimateProvider } from './context/ClimateContext';
 
 function Root() {
-  return (
-      <ThemeProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-  );
+    return (
+        <ThemeProvider>
+            <ClimateProvider>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </ClimateProvider>
+        </ThemeProvider>
+    );
 }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Root />
+    </React.StrictMode>,
+    document.getElementById('root')
 );
