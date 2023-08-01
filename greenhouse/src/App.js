@@ -37,14 +37,15 @@ function App() {
             return () => clearTimeout(humidityTimer);
         } else {
             if (humidity !== targetHumidity - 1 || humidity !== targetHumidity + 1) {
+                console.log("humidity: ", humidity);
                 humidityTimer = setTimeout(() => {
                     setHumidity(prev => prev < targetHumidity ? prev + 2 : prev - 2);
                 }, 1000);
             }
-            
-            if (humidity > targetHumidity) {
+
+            if (humidity === targetHumidity + 1) {
                 setHumidity(prev => prev - 1);
-            } else {
+            } else if (humidity === targetHumidity - 1) {
                 setHumidity(prev => prev + 1);
             }
 
